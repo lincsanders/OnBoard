@@ -1,0 +1,46 @@
+<div id="fb-root"></div>
+<script>
+  var fb_uid;
+  var fb_access_token;
+
+  function allowUpload(){
+    $('input').removeAttr('disabled');
+    $('#fb_uid').val(fb_uid);
+    $('#fb_access_token').val(fb_access_token);
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+      appId : '252695358159977',
+      status : true,
+      cookie : true,
+      xfbml : true,
+    });
+
+    FB.getLoginStatus(function(response){
+      if (response.status === 'connected') {
+        fb_uid = response.authResponse.userID;
+        fb_access_token = response.authResponse.accessToken;
+        allowUpload();
+      }
+      $('.fb-login-button').remove()
+    });
+  };
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
+<div class="fb-login-button">Login with Facebook</div>
+
+<form action="<%=submit_url%>" method="POST" enctype="multipart/form-data">
+    <input type="file" name="image_upload[]" disabled/>
+    <input type="hidden" name="fb_uid" value="" id="fb_uid" disabled/> 
+    <input type="hidden" name="fb_access_token" value="" id="fb_access_token" disabled/> 
+
+    <input type="submit" value="Submit!" disabled/>
+</form>

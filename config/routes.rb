@@ -1,4 +1,10 @@
 OnBoard::Application.routes.draw do
+
+  root :to => 'browse#index'
+
+  match 'upload' => 'upload#index', as: :upload
+  match 'upload/submit' => 'upload#submit', :as => :submit
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +54,6 @@ OnBoard::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 

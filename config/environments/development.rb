@@ -27,4 +27,6 @@ OnBoard::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.aws_bucket = 'wf-posts-development'
 end
