@@ -3,15 +3,14 @@ class BrowseController < ApplicationController
   def index
   end
 
+  def fullsize
+    @post = Post.find_by_unique_id(params[:unique_id])
+  end
+
   def latest
     posts=[]
     Post.find(:all, :order => "created_at DESC", :offset => params[:offset], :limit => params[:limit]).each do |p|
-      posts << {
-        large_url: p.large_url,
-        medium_url: p.medium_url,
-        small_url: p.small_url,
-        facebook_user_image: p.facebook_user_image,
-      }
+      posts << p.json_object
     end
 
     render :json => posts.to_json

@@ -10,37 +10,24 @@
   }
 
   window.fbAsyncInit = function() {
-    FB.init({
-      appId : '252695358159977',
-      status : true,
-      cookie : true,
-      xfbml : true,
-    });
-
-    function loginStatus(response){
-      if (response.status === 'connected') {
-        fb_uid = response.authResponse.userID;
-        fb_access_token = response.authResponse.accessToken;
-        $('.fb-login-button').hide();
-        allowUpload();
-      }
-      else{
-        $(function(){
-          $('.fb-login-button').show();
-        });
-      }
-    }
-
+    fbInit();
     FB.Event.subscribe('auth.statusChange', loginStatus);
   };
-  // Load the SDK Asynchronously
-  (function(d){
-     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/en_US/all.js";
-     ref.parentNode.insertBefore(js, ref);
-   }(document));
+
+  function loginStatus(response){
+    if (response.status === 'connected') {
+      fb_uid = response.authResponse.userID;
+      fb_access_token = response.authResponse.accessToken;
+      $('.fb-login-button').hide();
+      allowUpload();
+    }
+    else{
+      $(function(){
+        $('.fb-login-button').show();
+      });
+    }
+  }
+
 </script>
 <div class="fb-login-button" style="display:none;">Login with Facebook</div>
 

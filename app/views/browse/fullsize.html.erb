@@ -1,0 +1,12 @@
+<%= image_tag @post.large_url %><br />
+<div>
+	<fb:like send="true" width="450" show_faces="true" />
+</div>
+
+<div class="fb-comments" data-href="<%="#{request.host+request.fullpath}"%>" data-num-posts="5" data-width="470"></div>
+
+<script>
+	window.fbAsyncInit = function() {
+		fbInit();
+	}
+</script>

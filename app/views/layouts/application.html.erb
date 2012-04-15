@@ -2,13 +2,26 @@
 <html>
 <head>
   <title>OnBoard</title>
+  <meta property="fb:app_id" content="<%=Rails.configuration.fb_app_id%>"/>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+  <script>
+  function fbInit(){
+      FB.init({
+        appId : '<%=Rails.configuration.fb_app_id%>',
+        status : true,
+        cookie : true,
+        xfbml : true,
+      }); 
+  }
+  </script>
 </head>
 <body>
-
+  
 <%= yield %>
 
+<div id="fb-root"></div>
 </body>
 </html>

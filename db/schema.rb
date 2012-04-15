@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20120414131312) do
     t.string   "file_name"
     t.string   "unique_id"
     t.string   "mime_type"
+    t.integer  "rating"
     t.integer  "size"
     t.integer  "uploaded_by"
     t.datetime "created_at"

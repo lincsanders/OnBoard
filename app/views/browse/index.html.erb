@@ -1,12 +1,7 @@
-<script>
-	
-</script>
 <div id="intro-modal" style="display:none;">
 	<span id="asd">YOU ARE VISITING THE THANG FOR THE FIRST TIME, BRAH.<br /><a href="#" id="close-intro-modal">GO AWAY</a></span>
 </div>
-
-<div id="posts" style="display:none;">
-</div>
+<div id="posts" style="display:none;"></div>
 
 <script>
 	$(function(){
@@ -16,9 +11,7 @@
 			$('#intro-modal').fadeOut();
 
 			$.cookie("intro-screen-seen", true);
-
 			showLatest();
-
 			return false;
 		})
 
@@ -45,7 +38,7 @@
 
 <script id="postEntry" type="text/x-jquery-tmpl">
 	<div style="float: left;">
-		<img src="${medium_url}" /><br />
-		by <img src="${facebook_user_image}" />
+		<a href="${fullsize_url}"><img src="${medium_url}" /></a><br />
+		<img src="${facebook_user_image}" /> by ${facebook_name}
 	</div>
 </script>
