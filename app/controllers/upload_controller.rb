@@ -27,7 +27,6 @@ class UploadController < ApplicationController
       post.save_images file
 
       x = open("https://graph.facebook.com/#{params[:fb_uid]}/wermlandforever:upload?photo=#{fullsize_url({:unique_id => post.unique_id})}&access_token=#{params[:fb_access_token]}")
-      abort x.read.to_s
     end
 
     redirect_to upload_url and return
