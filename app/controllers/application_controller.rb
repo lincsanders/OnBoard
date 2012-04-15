@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  @header_tags=""
 
   private
   def facebook_user

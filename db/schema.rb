@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120414131312) do
+ActiveRecord::Schema.define(:version => 20120415202514) do
+
+  create_table "_posts_old_20120415", :force => true do |t|
+    t.string   "file_name"
+    t.string   "unique_id"
+    t.string   "mime_type"
+    t.integer  "rating"
+    t.integer  "size"
+    t.integer  "uploaded_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", :force => true do |t|
     t.string   "file_name"
@@ -22,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20120414131312) do
     t.integer  "uploaded_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uploaded_by_name"
+    t.string   "image_title"
   end
 
 end

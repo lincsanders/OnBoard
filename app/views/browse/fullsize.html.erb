@@ -1,3 +1,10 @@
+<% @header_tags << '<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# wermlandforever: http://ogp.me/ns/fb/wermlandforever#">' %>
+<% @header_tags << '<meta property="og:type" content="wermlandforever:photo" />' %>
+<% @header_tags << '<meta property="og:url" content="#{request.host+request.fullpath}" />' %>
+<% @header_tags << '<meta property="og:title" content="'+@post.image_title+'" />' %>
+<% @header_tags << '<meta property="og:description" content="'+@post.image_title+'" />' %>
+<% @header_tags << '<meta property="og:image" content="'+@post.medium_url+'" />' %>
+
 <%= image_tag @post.large_url %><br />
 <div>
 	<fb:like send="true" width="450" show_faces="true" />

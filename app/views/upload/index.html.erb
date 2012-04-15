@@ -32,7 +32,8 @@
 <div class="fb-login-button" style="display:none;">Login with Facebook</div>
 
 <form action="<%=submit_url%>" method="POST" enctype="multipart/form-data">
-    <input type="file" name="image_upload[]" disabled/>
+    <input type="input" name="image_title" disabled/><br />
+    <input type="file" name="image_upload" disabled/>
     <input type="hidden" name="fb_uid" value="" id="fb_uid" disabled/> 
     <input type="hidden" name="fb_access_token" value="" id="fb_access_token" disabled/> 
 
