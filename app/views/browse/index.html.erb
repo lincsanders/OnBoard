@@ -1,3 +1,51 @@
-<% @posts.each do |post| %>
-	<%=image_tag post.thumb_url, {:border => 0} %>
-<% end %>
+<script>
+	
+</script>
+<div id="intro-modal" style="display:none;">
+	<span id="asd">YOU ARE VISITING THE THANG FOR THE FIRST TIME, BRAH.<br /><a href="#" id="close-intro-modal">GO AWAY</a></span>
+</div>
+
+<div id="posts" style="display:none;">
+</div>
+
+<script>
+	$(function(){
+		$('#close-intro-modal').click(function(e){
+			e.preventDefault()
+
+			$('#intro-modal').fadeOut();
+
+			$.cookie("intro-screen-seen", true);
+
+			showLatest();
+
+			return false;
+		})
+
+		<% if cookies["intro-screen-seen"] %>
+			showLatest();
+		<% else %>
+			showModal();
+		<% end %>
+	})
+
+	function showLatest(){
+		$.get('<%=latest_url%>', function(posts){
+			console.log(posts);
+			$("#postEntry").tmpl(posts).appendTo("#posts");
+			$("#posts").fadeIn();
+		});
+	}
+
+	function showModal(){
+		$('#intro-modal').fadeIn();
+	}
+</script>
+
+
+<script id="postEntry" type="text/x-jquery-tmpl">
+	<div style="float: left;">
+		<img src="${medium_url}" /><br />
+		by <img src="${facebook_user_image}" />
+	</div>
+</script>

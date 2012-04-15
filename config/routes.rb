@@ -5,6 +5,9 @@ OnBoard::Application.routes.draw do
   match 'upload' => 'upload#index', as: :upload
   match 'upload/submit' => 'upload#submit', :as => :submit
 
+  match 'browse/latest' => 'browse#latest', :as => :latest
+  match 'browse/top_rated' => 'browse#top_rated', :as => :top_rated
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(:version => 20120414131312) do
 
   create_table "posts", :force => true do |t|
+    t.string   "file_name"
     t.string   "unique_id"
     t.string   "mime_type"
     t.integer  "size"

@@ -10,21 +10,28 @@
   }
 
   window.fbAsyncInit = function() {
-  FB.init({
+    FB.init({
       appId : '252695358159977',
       status : true,
       cookie : true,
       xfbml : true,
     });
 
-    FB.getLoginStatus(function(response){
+    function loginStatus(response){
       if (response.status === 'connected') {
         fb_uid = response.authResponse.userID;
         fb_access_token = response.authResponse.accessToken;
+        $('.fb-login-button').hide();
         allowUpload();
       }
-      $('.fb-login-button').remove()
-    });
+      else{
+        $(function(){
+          $('.fb-login-button').show();
+        });
+      }
+    }
+
+    FB.Event.subscribe('auth.statusChange', loginStatus);
   };
   // Load the SDK Asynchronously
   (function(d){
@@ -35,7 +42,7 @@
      ref.parentNode.insertBefore(js, ref);
    }(document));
 </script>
-<div class="fb-login-button">Login with Facebook</div>
+<div class="fb-login-button" style="display:none;">Login with Facebook</div>
 
 <form action="<%=submit_url%>" method="POST" enctype="multipart/form-data">
     <input type="file" name="image_upload[]" disabled/>
