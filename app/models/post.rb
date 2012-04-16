@@ -73,6 +73,6 @@ class Post < ActiveRecord::Base
 
   private
   def set_identifiers
-    self.unique_id = random_unique_id
+    self.unique_id = random_unique_id if !self.unique_id
   end
 end
