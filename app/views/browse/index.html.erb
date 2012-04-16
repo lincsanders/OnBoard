@@ -18,6 +18,7 @@
     var loadingNext = true;
     var reachedEnd = false;
     var scrollTimer = null;
+    var correctImageSpacingTimer = null;
 
     function onPopulate(){
 		handler = $('#tiles li');
@@ -38,12 +39,12 @@
     		fbInit();
     	})
     }
-    
-    function onScroll(event) {
+
+    function scrollFunctions(){
       	var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 300);
 
 		if(closeToBottom) {
-			if(!loadingNext && !reachedEnd)loadNext();
+			if(!loadingNext && !reachedEnd) loadNext();
 
 			// Clear our previous layout handler.
 			if(handler) handler.wookmarkClear();
@@ -51,6 +52,10 @@
 			handler = $('#tiles li');
 			handler.wookmark(options);
 		}
+    }
+    
+    function onScroll(event) {
+    	if(!scrollTimer) scrollTimer=setTimeout('scrollFunctions()', 300);
     };
 
     function loadNext(){
@@ -58,12 +63,20 @@
 		$.ajax({
 			url: nextUrl,
 			success: function(response){
-					console.log(response.posts)
 					$("#post-tmpl").tmpl(response.posts).appendTo("#tiles");
 					nextUrl = response.next_url;
     				onPopulate();
     				if(response.reached_end) reachedEnd=true;
     				loadingNext = false;
+
+			    	$('#tiles img').on('load', function(){
+			    		if(correctImageSpacingTimer){
+			    			clearTimeout(correctImageSpacingTimer);
+			    			correctImageSpacingTimer = setTimeout('onPopulate()', 100);	
+			    		}else{
+			    			correctImageSpacingTimer = setTimeout('onPopulate()', 100);
+			    		}
+			    	});
 				},
 			type: 'POST'
 		});
@@ -72,6 +85,7 @@
     $(function() {
     	onPopulate();
     	loadNext();
+
     	$(document).bind('scroll', onScroll);
     });
 
@@ -84,29 +98,33 @@
 <script id="post-tmpl" type="text/x-jquery-tmpl">
 	<li>
 		<a class="fancybox fb-init" href="#modal_${unique_id}">
-			<img src="${medium_url}" width="200" height="283" class="photo">
+			<img src="${medium_url}" class="photo">
 		</a>
 		<p class="caption">${image_title}</p>
 		<div class="sharing">
 			<div class="inner">
 				<a href="http://pinterest.com/pin/create/button/" class="pin-it-button" count-layout="horizontal"><img border="0" src="http://assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
-				<div class="fb-like" data-href="http://wermlandforever.se" data-send="false" data-layout="button_count" data-width="70" data-show-faces="false"></div>
+				<div class="fb-like" data-href="${fullsize_url}" data-send="false" data-layout="button_count" data-width="70" data-show-faces="false"></div>
 			</div>
 		</div>
 		<div class="author">
 			<img src="${facebook_user_image}" alt="Author name" width="39" height="37">
 			<p>
 				<!--<a href="#" class="map">Visa på kartan</a><br>-->
-				av <span class="name">${facebook_name}</span>
+				av <span class="name">${uploaded_by_name}</span>
 			</p>
 
 		</div>
-		<div class="hidden" id="modal_${unique_id}">
+		<div class="modal only-slightly-hidden" id="modal_${unique_id}">
 			<img src="${large_url}" />
 
-			<img src="${facebook_user_image}" alt="Author name" width="39" height="37">
 
-			<div class="fb-comments" data-href="${fullsize_url}" data-num-posts="5" data-width="470"></div>
+			asdasdasdaddsd
+
+			<% if 1==2 %>
+				<img src="${facebook_user_image}" alt="Author name" width="39" height="37">
+				<div class="fb-comments" data-href="${fullsize_url}" data-num-posts="5" data-width="470"></div>
+			<% end %>
 		</div>
 	</li>
 </script>

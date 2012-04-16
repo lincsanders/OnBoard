@@ -9,6 +9,10 @@ class Post < ActiveRecord::Base
   MEDIUM = 198
   SMALL = 75
 
+  NAME='name'
+  ANON='anon'
+  CUSTOM='custom'
+
   def s3_base; "http://#{Rails.configuration.aws_bucket}.s3.amazonaws.com/"; end
   def facebook_user_image; "http://graph.facebook.com/#{uploaded_by}/picture"; end
 
@@ -27,9 +31,9 @@ class Post < ActiveRecord::Base
       large_url: large_url,
       medium_url: medium_url,
       small_url: small_url,
-      facebook_user_image: facebook_user_image,
+      facebook_user_image: submission_type != ANON ? facebook_user_image : '',
       unique_id: unique_id,
-      facebook_name: uploaded_by_name,
+      uploaded_by_name: uploaded_by_name,
       fullsize_url: fullsize_url({:unique_id => unique_id, :host => Rails.configuration.host}),
     }
   end

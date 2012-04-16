@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120415204917) do
+ActiveRecord::Schema.define(:version => 20120416193717) do
 
   create_table "_posts_old_20120415", :force => true do |t|
     t.string   "file_name"
@@ -30,11 +30,12 @@ ActiveRecord::Schema.define(:version => 20120415204917) do
     t.string   "mime_type"
     t.integer  "rating"
     t.string   "size"
-    t.integer  "uploaded_by"
+    t.string   "uploaded_by"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "uploaded_by_name"
     t.string   "image_title"
+    t.string   "submission_type"
   end
 
 end

@@ -1,4 +1,41 @@
-<div id="fb-root"></div>
+<div id="upload-image">
+  <h2>Ladda upp en bild</h2>
+  <p class="intro">
+    Dela med dig av ditt Wermland med andra människor!<br>
+    Tänk på att inte ladda upp bilder som kan vara stötande.
+  </p>
+
+  <form action="<%=submit_url%>" method="POST" enctype="multipart/form-data">
+
+    <p>
+      <input type="text" placeholder="Beskrivning (max 30 tecken)" name="image_title">
+    </p>
+
+    <p>
+      <input type="file" name="image_upload">
+    </p>
+
+    <ul id="upload-name">
+      <li>
+        <input type="radio" name="name" id="show-name" value="<%=Post::NAME%>" checked="checked">
+        <label for="show-name">Visa mitt namn</label>
+      </li>
+      <li>
+        <input type="radio" name="name" value="<%=Post::CUSTOM%>">
+        <input type="text" placeholder="Namn (max 30 tecken)" name="custom_name">
+      </li>
+      <li>
+        <input type="radio" name="name" id="anonymous" value="<%=Post::ANON%>">
+        <label for="anonymous">Visa inte mitt namn (Anonym)</label>
+      </li>
+      <input type="hidden" name="fb_uid" value="" id="fb_uid" disabled/> 
+      <input type="hidden" name="fb_access_token" value="" id="fb_access_token" disabled/> 
+    </ul>
+
+    <input type="submit" value="Ladda upp" class="submit-button">
+  </form>
+</div>
+
 <script>
   var fb_uid;
   var fb_access_token;
@@ -12,6 +49,7 @@
   window.fbAsyncInit = function() {
     fbInit();
     FB.Event.subscribe('auth.statusChange', loginStatus);
+    $('.spinner').hide();
   };
 
   function loginStatus(response){
@@ -29,13 +67,3 @@
   }
 
 </script>
-<div class="fb-login-button" style="display:none;">Login with Facebook</div>
-
-<form action="<%=submit_url%>" method="POST" enctype="multipart/form-data">
-    <input type="input" name="image_title" disabled/><br />
-    <input type="file" name="image_upload" disabled/>
-    <input type="hidden" name="fb_uid" value="" id="fb_uid" disabled/> 
-    <input type="hidden" name="fb_access_token" value="" id="fb_access_token" disabled/> 
-
-    <input type="submit" value="Submit!" disabled/>
-</form>
