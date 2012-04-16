@@ -13,7 +13,7 @@ class BrowseController < ApplicationController
 
   def latest
     posts=[]
-    Post.find(:all, :order => "created_at DESC", :offset => params[:offset], :limit => params[:limit]).each do |p|
+    Post.find(:all, :order => "created_at DESC", :limit => STEP).each do |p|
       posts << p.json_object
     end
 
@@ -25,7 +25,7 @@ class BrowseController < ApplicationController
 
   def next
     posts=[]
-    Post.find(:all, :order => "created_at DESC", :offset => params[:offset], :limit => params[:limit]).each do |p|
+    Post.find(:all, :order => "created_at DESC", :offset => params[:offset], :limit => STEP).each do |p|
       posts << p.json_object
     end
 
