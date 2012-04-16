@@ -43,7 +43,7 @@ header{
 	height: 42px;
 	line-height: 42px;
 	padding: 0 13px;
-	border-bottom: 3px solid #55865f;
+	border-bottom: 3px solid #92313e;
 	background: #fbfbfd;
 	position: fixed;
 	top: 0;
@@ -74,8 +74,13 @@ label{
 }
 
 .logo{
-	margin: 0 20px 0 0;
-	float: left;
+/*	margin: 0 20px 0 0;
+	float: left;*/
+
+	position: absolute;
+	left: 50%;
+	margin-left: -47px;
+	top: 5px;
 }
 
 nav{
@@ -90,13 +95,13 @@ nav{
 	padding: 0 20px 0 45px;
 	border-radius: 5px;
 	float: right;
-	background: #183f15 url(img/camera.png) 12px center no-repeat;
+	background: #92313e url(img/camera.png) 12px center no-repeat;
 	color: #fff;
 	font-family: 'Open Sans Condensed', sans-serif;
 }
 
 #upload-your-image:hover{
-	background-color: #1a4916;
+	background-color: #701e29;
 }
 
 nav ul{
@@ -114,12 +119,12 @@ nav a{
 	height: 42px;
 	padding: 0 10px;
 	font-size: 20px;
-	color: #183f15;
+	color: #999;
 	text-shadow: 0 1px 1px #848d83;
 }
 
 nav a:hover, nav a.active{
-	color: #24601f;
+	color: #222;
 }
 
 #sign-in{
@@ -210,13 +215,6 @@ nav a:hover, nav a.active{
 
 .name{
 	font-weight: bold;
-}
-
-.spinner{ 
-	float: right; 
-	position: relative;
-	top: 17px;
-	left: -5px;
 }
 
 /* Upload image */

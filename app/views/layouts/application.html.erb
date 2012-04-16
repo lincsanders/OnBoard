@@ -63,7 +63,16 @@ mixpanel.init("6c102db8c785908b1c44e2e379d97227");</script>
               FB.login();
             })
           }
+
           $('.spinner').hide();
+
+        });
+
+        FB.getLoginStatus(function(response) {
+          if(response.status=="unknown"){
+            $('.spinner').hide();
+            $('#sign-in').removeClass('hidden').hide().fadeIn();
+          }
         });
       });
     }
