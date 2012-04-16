@@ -47,5 +47,8 @@ module OnBoard
 
     config.aws_bucket = 'wf-posts'
     config.fb_app_id = '252695358159977'
+
+
+    config.host = 'www.wermlandforever.se'
   end
 end

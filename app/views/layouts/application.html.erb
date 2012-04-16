@@ -14,13 +14,16 @@
   <script src="//assets.pinterest.com/js/pinit.js"></script>
 
   <script>
-  function fbInit(){
+  function fbInit(callback){
       FB.init({
         appId : '<%=Rails.configuration.fb_app_id%>',
         status : true,
         cookie : true,
         xfbml : true,
       }); 
+
+      if(callback)
+        callback();
   }
   </script>
 <script type="text/javascript">(function(d,c){var a,b,g,e;a=d.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===d.location.protocol?"https:":"http:")+'//api.mixpanel.com/site_media/js/api/mixpanel.2.js';b=d.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b);c._i=[];c.init=function(a,d,f){var b=c;"undefined"!==typeof f?b=c[f]=[]:f="mixpanel";g="disable track track_pageview track_links track_forms register register_once unregister identify name_tag set_config".split(" ");
@@ -39,8 +42,37 @@ mixpanel.init("6c102db8c785908b1c44e2e379d97227");</script>
         <li><a href="#">Wermlands favoriter</a></li>
       </ul>
     </nav>
+    <script>
+    window.fbAsyncInit = function() {
+      fbInit(function(){
 
-    <div id="sign-in">
+        FB.getLoginStatus(function(response) {
+          if (response.status === 'connected') {
+            // the user is logged in and has authenticated your
+            // app, and response.authResponse supplies
+            // the user's ID, a valid access token, a signed
+            // request, and the time the access token 
+            // and signed request each expire
+            var uid = response.authResponse.userID;
+            var accessToken = response.authResponse.accessToken;
+
+            $('#signed-in-nav').show();
+          }else{
+            $('#sign-in').show();
+          }
+        });
+
+      });
+    }
+    </script>
+
+    <nav id="signed-in-nav" class="hidden">
+      <ul>
+        <li><a href="#">Ladda upp bild</a></li>
+      </ul>
+    </nav>
+
+    <div id="sign-in" class="hidden">
       <span>
         Dela med dig av ditt Wermland
         <img src="img/arrow.png">
@@ -49,9 +81,7 @@ mixpanel.init("6c102db8c785908b1c44e2e379d97227");</script>
     </div>
   </header>
 
-  <div id="main-content">
-    <%= yield %>
-  </div>
+  <%= yield %>
 
 <div id="fb-root"></div>
 </body>

@@ -28,8 +28,9 @@ class Post < ActiveRecord::Base
       medium_url: medium_url,
       small_url: small_url,
       facebook_user_image: facebook_user_image,
+      unique_id: unique_id,
       facebook_name: uploaded_by_name,
-      fullsize_url: fullsize_url({:unique_id => unique_id, :only_path => true}),
+      fullsize_url: fullsize_url({:unique_id => unique_id, :host => Rails.configuration.host}),
     }
   end
   

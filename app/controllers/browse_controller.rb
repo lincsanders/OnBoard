@@ -4,10 +4,13 @@ class BrowseController < ApplicationController
   STEP = 25
 
   def index
+    @facebook_user = facebook_user
   end
 
   def fullsize
     @post = Post.find_by_unique_id(params[:unique_id])
+
+    render :layout => false
   end
 
   def latest

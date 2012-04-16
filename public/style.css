@@ -22,6 +22,18 @@ a{
 	text-decoration: none;
 }
 
+h2{
+	margin: 0;
+	font: 42px/42px 'Open Sans Condensed', sans-serif;
+	color: #61a200;
+}
+
+p.intro{
+	margin: 5px 0 10px;
+	font: 22px/22px 'Open Sans Condensed', sans-serif;
+	color: #4d4e45;
+}
+
 a:hover{
 	color: #266221;
 }
@@ -49,6 +61,8 @@ nav{
 	float: left;
 	font-family: 'Open Sans Condensed', sans-serif;
 }
+
+#signed-in-nav{ float: right; }
 
 nav ul{
 	margin: 0;
@@ -90,6 +104,26 @@ nav a:hover, nav a.active{
 	cursor: pointer;
 }
 
+#upload-image{
+	width: 530px;
+	height: 310px;
+	padding: 20px 35px;
+	background: #fff;
+	border-radius: 4px;
+	border: 5px solid rgba(0,0,0,0.39);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-background-clip: padding;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -175px;
+	margin-left: -305px;
+}
+
 #tiles {
 	margin: 0;
 	position: relative;
@@ -104,7 +138,6 @@ nav a:hover, nav a.active{
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-	cursor: pointer;
 	-webkit-background-clip: padding;
 	-moz-background-clip: padding;
 	background-clip: padding-box;
@@ -122,9 +155,9 @@ nav a:hover, nav a.active{
 }
 
 .sharing{
+	margin: 0 10px;
 	height: 30px;
 	line-height: 30px;
-	text-align: center;
 }
 
 .sharing .inner{
@@ -170,7 +203,7 @@ nav a:hover, nav a.active{
 	#sign-in span{ display: none; }
 }
 
-@media only screen and (max-width: 490px) {
+@media only screen and (max-width: 610px) {
 	.logo{ margin-right: 10px; }
 	nav a{
 		padding: 0 5px;
@@ -178,11 +211,26 @@ nav a:hover, nav a.active{
 	}
 }
 
-@media only screen and (max-width: 440px) {
+@media only screen and (max-width: 520px) {
 	header{ padding: 0 3px; }
 	.logo{ margin-right: 5px; }
 	nav a{
 		padding: 0 3px;
+	}
+
+	nav { height: 22px; }
+	nav li{ float: none; }
+	nav a{
+		height: 20px;
+		line-height: 20px;
 		font-size: 15px;
 	}
 }
+
+@media only screen and (max-width: 395px) {
+	nav a{
+		font-size: 14px;
+	}
+}
+
+.hidden {display: none;}

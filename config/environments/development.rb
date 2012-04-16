@@ -29,4 +29,5 @@ OnBoard::Application.configure do
   config.assets.debug = true
 
   config.aws_bucket = 'wf-posts-development'
+  config.host = 'local.wermlandforever.se:3000'
 end

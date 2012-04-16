@@ -33,6 +33,10 @@
 	    		}
 	    	}
     	});
+
+    	$('.fb-init').click(function(e){
+    		fbInit();
+    	})
     }
     
     function onScroll(event) {
@@ -79,9 +83,7 @@
 
 <script id="post-tmpl" type="text/x-jquery-tmpl">
 	<li>
-		<a class="fancybox" href="${large_url}" title="
-			<img src='${facebook_user_image}' alt='Author name' width='39' height='37'>
-		">
+		<a class="fancybox fb-init" href="#modal_${unique_id}">
 			<img src="${medium_url}" width="200" height="283" class="photo">
 		</a>
 		<p class="caption">${image_title}</p>
@@ -98,6 +100,13 @@
 				av <span class="name">${facebook_name}</span>
 			</p>
 
+		</div>
+		<div class="hidden" id="modal_${unique_id}">
+			<img src="${large_url}" />
+
+			<img src="${facebook_user_image}" alt="Author name" width="39" height="37">
+
+			<div class="fb-comments" data-href="${fullsize_url}" data-num-posts="5" data-width="470"></div>
 		</div>
 	</li>
 </script>
