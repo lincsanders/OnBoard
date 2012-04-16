@@ -33,6 +33,7 @@ class Post < ActiveRecord::Base
       small_url: small_url,
       facebook_user_image: submission_type != ANON ? facebook_user_image : '',
       unique_id: unique_id,
+      image_title: image_title,
       uploaded_by_name: uploaded_by_name,
       fullsize_url: fullsize_url({:unique_id => unique_id, :host => Rails.configuration.host}),
     }
