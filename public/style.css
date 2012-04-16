@@ -1,0 +1,188 @@
+html {
+	background: url(img/bg.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/bg.jpg', sizingMethod='scale');
+	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/bg.jpg', sizingMethod='scale')";
+}
+
+body{
+	margin: 62px 0 0;
+	-webkit-font-smoothing: antialiased;
+}
+
+a{
+	color: #183f15;
+	-webkit-transition: color 0.4s;
+	-moz-transition: color 0.4s;
+	-o-transition: color 0.4s;
+	transition: color 0.4s;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #266221;
+}
+
+header{
+	display: block;
+	height: 42px;
+	line-height: 42px;
+	padding: 0 13px;
+	border-bottom: 3px solid #55865f;
+	background: #fbfbfd;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 999;
+}
+
+.logo{
+	margin: 0 20px 0 0;
+	float: left;
+}
+
+nav{
+	float: left;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+nav ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+nav li{
+	float: left;
+}
+
+nav a{
+	display: block;
+	height: 42px;
+	padding: 0 10px;
+	font-size: 20px;
+	color: #183f15;
+	text-shadow: 0 1px 1px #848d83;
+}
+
+nav a:hover, nav a.active{
+	color: #24601f;
+}
+
+#sign-in{
+	height: 42px;
+	float: right;
+	font: 16px/42px 'The Girl Next Door', serif;
+	color: #3f3f3f;
+}
+
+#sign-in .fb-connect{
+	display: inline-block;
+	width: 101px;
+	height: 27px;
+	margin-left: 5px;
+	background: url(img/fb.png);
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+#tiles {
+	margin: 0;
+	position: relative;
+	list-style-type: none;
+}
+
+#tiles li {
+	display: none;
+	width: 208px;
+	background: #fff;
+	border: 5px solid rgba(0,0,0,0.39);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	cursor: pointer;
+	-webkit-background-clip: padding;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	font: 12px 'Helvetica Neue', sans-serif;
+}
+
+.photo {
+	display: block;
+	margin: 4px;
+}
+
+.caption{
+	margin: 0;
+	text-align: center;
+}
+
+.sharing{
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.sharing .inner{
+	display: inline-block;
+	line-height: 38px;
+}
+
+.sharing .pin-it-button,
+.sharing .fb-like{
+	display: inline-block;
+}
+
+.sharing .pin-it-button{
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+}
+
+.author{
+	height: 48px;
+	overflow: hidden;
+	background: #e7e7e7;
+}
+
+.author img{
+	margin: 5px;
+	float: left;
+}
+
+.author p{
+	margin-top: 9px;
+}
+
+.name{
+	font-weight: bold;
+}
+
+@media only screen and (max-width: 800px) {
+	nav a{ font-size: 18px; }
+}
+
+@media only screen and (max-width: 770px) {
+	#sign-in span{ display: none; }
+}
+
+@media only screen and (max-width: 490px) {
+	.logo{ margin-right: 10px; }
+	nav a{
+		padding: 0 5px;
+		font-size: 16px;
+	}
+}
+
+@media only screen and (max-width: 440px) {
+	header{ padding: 0 3px; }
+	.logo{ margin-right: 5px; }
+	nav a{
+		padding: 0 3px;
+		font-size: 15px;
+	}
+}

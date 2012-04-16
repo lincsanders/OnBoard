@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>OnBoard</title>
+  <title>Wermland Forever</title>
   <%= @header_tags ? @header_tags.html_safe : '' %>
   <meta property="fb:app_id" content="<%=Rails.configuration.fb_app_id%>"/>
 
   <%= stylesheet_link_tag    "application" %>
+  <link rel="stylesheet" href="style.css">
+
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700|The+Girl+Next+Door">
+  <script src="//assets.pinterest.com/js/pinit.js"></script>
 
   <script>
   function fbInit(){
@@ -19,10 +23,33 @@
       }); 
   }
   </script>
+
 </head>
 <body>
-  
-<%= yield %>
+  <header>
+    <a href="/" class="logo">
+      <img src="img/logo.png" alt="Wermland Forever">
+    </a>
+
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Senast tillagda</a></li>
+        <li><a href="#">Wermlands favoriter</a></li>
+      </ul>
+    </nav>
+
+    <div id="sign-in">
+      <span>
+        Dela med dig av ditt Wermland
+        <img src="img/arrow.png">
+      </span>
+      <div class="fb-connect"></div>
+    </div>
+  </header>
+
+  <div id="main-content">
+    <%= yield %>
+  </div>
 
 <div id="fb-root"></div>
 </body>

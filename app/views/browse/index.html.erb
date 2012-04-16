@@ -1,34 +1,76 @@
-<div id="intro-modal" style="display:none;">
-	<span>Something very cool is coming...</span>
-</div>
-<div id="posts" style="display:none;"></div>
+<!-- sample content to test wookmark -->
+<ul id="tiles">
+
+</ul>
+
+<script src="js/jquery.wookmark.js"></script>
+<script src="js/jquery.fancybox.pack.js"></script>
 
 <script>
-	$(function(){
-		$('#close-intro-modal').click(function(e){
-			e.preventDefault()
+    // Wookmark
+    var handler = null;
+    var options = {
+		autoResize: true,
+		offset: 16,
+		itemWidth: 210
+    };
+    var nextUrl = "<%=latest_url%>";
+    var loadingNext = true;
+    var reachedEnd = false;
+    var scrollTimer = null;
 
-			$('#intro-modal').fadeOut();
+    function onPopulate(){
+    	$(document).bind('scroll', onScroll);
 
-			$.cookie("intro-screen-seen", true);
-			//showLatest();
-			return false;
-		})
+		handler = $('#tiles li');
+		handler.wookmark(options);
 
-		<% if cookies["intro-screen-seen"] %>
-			showLatest();
-		<% else %>
-			showModal();
-		<% end %>
-	})
+    	$('.fancybox').fancybox({
+    		openEffect	: 'elastic',
+    		closeEffect	: 'elastic',
 
-	function showLatest(){
-		$.get('<%=latest_url%>', function(posts){
-			console.log(posts);
-			$("#postEntry").tmpl(posts).appendTo("#posts");
-			$("#posts").fadeIn();
+	    	helpers : {
+	    		title : {
+	    			type : 'inside'
+	    		}
+	    	}
+    	});
+    }
+    
+    function onScroll(event) {
+      	var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 300);
+
+		if(closeToBottom) {
+			if(!loadingNext && !reachedEnd)loadNext();
+
+			// Clear our previous layout handler.
+			if(handler) handler.wookmarkClear();
+
+			handler = $('#tiles li');
+			handler.wookmark(options);
+		}
+    };
+
+    function loadNext(){
+		loadingNext = true;
+		$.ajax({
+			url: nextUrl,
+			success: function(response){
+					console.log(response.posts)
+					$("#post-tmpl").tmpl(response.posts).appendTo("#tiles");
+					nextUrl = response.next_url;
+    				onPopulate();
+    				if(response.reached_end) reachedEnd=true;
+    				loadingNext = false;
+				},
+			type: 'POST'
 		});
-	}
+    }
+  
+    $(function() {
+    	onPopulate();
+    	loadNext();
+    });
 
 	function showModal(){
 		$('#intro-modal').fadeIn();
@@ -36,9 +78,25 @@
 </script>
 
 
-<script id="postEntry" type="text/x-jquery-tmpl">
-	<div style="float: left;">
-		<a href="${fullsize_url}"><img src="${medium_url}" /></a><br />
-		<img src="${facebook_user_image}" /> by ${facebook_name}
-	</div>
+<script id="post-tmpl" type="text/x-jquery-tmpl">
+	<li>
+		<a class="fancybox" href="${fullsize_url}" title="<strong>Url:</strong> ${fullsize_url}">
+			<img src="${medium_url}" width="200" height="283" class="photo">
+		</a>
+		<p class="caption">${image_title}</p>
+		<div class="sharing">
+			<div class="inner">
+				<a href="http://pinterest.com/pin/create/button/" class="pin-it-button" count-layout="horizontal"><img border="0" src="http://assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
+				<div class="fb-like" data-href="http://wermlandforever.se" data-send="false" data-layout="button_count" data-width="70" data-show-faces="false"></div>
+			</div>
+		</div>
+		<div class="author">
+			<img src="${facebook_user_image}" alt="Author name" width="39" height="37">
+			<p>
+				<!--<a href="#" class="map">Visa på kartan</a><br>-->
+				av <span class="name">${facebook_name}</span>
+			</p>
+
+		</div>
+	</li>
 </script>
