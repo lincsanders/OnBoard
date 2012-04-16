@@ -13,17 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20120416193717) do
 
-  create_table "_posts_old_20120415", :force => true do |t|
-    t.string   "file_name"
-    t.string   "unique_id"
-    t.string   "mime_type"
-    t.integer  "rating"
-    t.integer  "size"
-    t.integer  "uploaded_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "posts", :force => true do |t|
     t.string   "file_name"
     t.string   "unique_id"
@@ -31,9 +20,9 @@ ActiveRecord::Schema.define(:version => 20120416193717) do
     t.integer  "rating"
     t.string   "size"
     t.string   "uploaded_by"
+    t.string   "uploaded_by_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "uploaded_by_name"
     t.string   "image_title"
     t.string   "submission_type"
   end
