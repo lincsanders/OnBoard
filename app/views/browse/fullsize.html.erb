@@ -6,15 +6,8 @@
 <% @header_tags << '<meta property="og:description" content="'+@post.image_title.to_s+'" />' %>
 <% @header_tags << '<meta property="og:image" content="'+@post.medium_url+'" />' %>
 
-<%= image_tag @post.large_url %><br />
-<div>
-	<fb:like send="true" width="450" show_faces="true" />
-</div>
+<%= image_tag @post.large_url %>
 
-<div class="fb-comments" data-href="<%="#{Rails.configuration.host+request.fullpath}"%>" data-num-posts="5" data-width="470"></div>
+<div><fb:like send="true" width="450" show_faces="true" /></div>
 
-<script>
-	window.fbAsyncInit = function() {
-		fbInit();
-	}
-</script>
+<div class="fb-comments" data-href="<%="#{fullsize_url :unique_id => @post.unique_id}"%>" data-num-posts="5" data-width="470"></div>

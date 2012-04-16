@@ -8,6 +8,7 @@ OnBoard::Application.routes.draw do
   match 'latest' => 'browse#latest', :as => :latest
   match 'next/:offset' => 'browse#next', :as => :next
   match 'top_rated' => 'browse#top_rated', :as => :top_rated
+  
   match ':unique_id' => 'browse#fullsize', :as => :fullsize
 
   # The priority is based upon order of creation:

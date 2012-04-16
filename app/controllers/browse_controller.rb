@@ -8,9 +8,8 @@ class BrowseController < ApplicationController
   end
 
   def fullsize
+    redirect_to '/'
     @post = Post.find_by_unique_id(params[:unique_id])
-
-    render :layout => false
   end
 
   def latest

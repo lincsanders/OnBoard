@@ -19,7 +19,7 @@ class UploadController < ApplicationController
         mime_type: file.content_type, 
         size: file.size, 
         uploaded_by: params[:fb_uid], 
-        uploaded_by_name: (params[:name] == Post::CUSTOM ? params[:custom_name] : (params[:name] == Post::NAME ? facebook_user['name'] : 'Anonymous')),
+        uploaded_by_name: facebook_user['name'],
         image_title: params[:image_title],
         file_name: Post.random_filename(File.extname(file.original_filename)),
       })
