@@ -20,8 +20,6 @@
     var scrollTimer = null;
 
     function onPopulate(){
-    	$(document).bind('scroll', onScroll);
-
 		handler = $('#tiles li');
 		handler.wookmark(options);
 
@@ -70,6 +68,7 @@
     $(function() {
     	onPopulate();
     	loadNext();
+    	$(document).bind('scroll', onScroll);
     });
 
 	function showModal(){
@@ -80,7 +79,9 @@
 
 <script id="post-tmpl" type="text/x-jquery-tmpl">
 	<li>
-		<a class="fancybox" href="${fullsize_url}" title="<strong>Url:</strong> ${fullsize_url}">
+		<a class="fancybox" href="${large_url}" title="
+			<img src='${facebook_user_image}' alt='Author name' width='39' height='37'>
+		">
 			<img src="${medium_url}" width="200" height="283" class="photo">
 		</a>
 		<p class="caption">${image_title}</p>

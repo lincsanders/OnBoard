@@ -20,7 +20,10 @@ end
 gem 'jquery-rails'
 gem 'right_aws'
 gem 'tupalo-mini_magick'
-gem 'pg'
+
+group :production do
+  gem 'pg'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
