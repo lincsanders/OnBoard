@@ -4,7 +4,9 @@
   <title>Wermland Forever</title>
   <%= @header_tags ? @header_tags.html_safe : '' %>
   <meta property="fb:app_id" content="<%=Rails.configuration.fb_app_id%>"/>
-
+  <meta property="og:title" content="Wermland Forever" />
+  <meta property="og:description" content="WermlandForever.se är en möjlighet för alla värmlänningar att bidra till och dela bilden av Värmland." />
+  <meta property="og:image" content="http://www.wermlandforever.se/img/logo.png" />
   <%= stylesheet_link_tag    "application" %>
   <link rel="stylesheet" href="style.css">
 
