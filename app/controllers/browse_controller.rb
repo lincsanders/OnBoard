@@ -10,6 +10,7 @@ class BrowseController < ApplicationController
   def fullsize
     @post = Post.find_by_unique_id(params[:unique_id])
     @post.increment(:rating)
+    @post.save
   end
 
   def latest
