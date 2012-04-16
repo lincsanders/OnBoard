@@ -4,7 +4,7 @@
 </ul>
 
 <script src="js/jquery.wookmark.js"></script>
-<script src="js/jquery.fancybox.pack.js"></script>
+<script src="js/jquery.prettyphoto.js"></script>
 
 <script>
     // Wookmark
@@ -24,16 +24,9 @@
 		handler = $('#tiles li');
 		handler.wookmark(options);
 
-    	$('.fancybox').fancybox({
-    		openEffect	: 'elastic',
-    		closeEffect	: 'elastic',
-
-	    	helpers : {
-	    		title : {
-	    			type : 'inside'
-	    		}
-	    	}
-    	});
+		$("a[rel^='prettyPhoto']").prettyPhoto({
+			social_tools: ''
+		});
 
     	$('.fb-init').click(function(e){
     		fbInit();
@@ -100,7 +93,7 @@
 
 <script id="post-tmpl" type="text/x-jquery-tmpl">
 	<li>
-		<a class="fancybox fb-init" href="#modal_${unique_id}">
+		<a class="fb-init" href="${large_url}" rel="prettyPhoto" title="${image_title}">
 			<img src="${medium_url}" class="photo">
 		</a>
 		<p class="caption">${image_title}</p>
@@ -117,14 +110,6 @@
 				av <span class="name">${uploaded_by_name}</span>
 			</p>
 
-		</div>
-		<div class="modal only-slightly-hidden" id="modal_${unique_id}">
-			<img src="${large_url}" />
-
-			<% if 1==2 %>
-				<img src="${facebook_user_image}" alt="Author name" width="39" height="37">
-				<div class="fb-comments" data-href="${fullsize_url}" data-num-posts="5" data-width="470"></div>
-			<% end %>
 		</div>
 	</li>
 </script>
