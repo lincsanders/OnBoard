@@ -249,22 +249,6 @@ nav a:hover, nav a.active{
 	margin-left: -305px;
 }
 
-#upload-name{
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-#upload-name li{
-	margin: 0 0 10px;
-}
-
-#upload-name input[type=radio]{
-	position: relative;
-	top: 1px;
-	left: -3px;
-}
-
 .submit-button{
 	height: 42px;
 	padding: 0 10px;
@@ -284,6 +268,53 @@ nav a:hover, nav a.active{
 	-webkit-transition: background 0.2s;
 }
 .submit-button:hover{ background: #d9ddc5; }
+
+/* Fullsize image */
+
+#fullsize-image{
+	text-align: center;
+	margin-top: auto;
+	margin-left: auto;
+}
+
+#fullsize-image img{
+	border-radius: 4px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	-webkit-background-clip: padding;
+	-moz-background-clip: padding;
+
+	margin-top: 50px;
+	background-color: white;
+	padding: 20px;
+}
+
+#fullsize-image .image-facebook{
+	background-color: white;
+	width: 450px;
+
+	margin-top: auto;
+	margin-left: auto;
+}
+
+#fullsize-facebook{
+	width: 530px;
+	padding: 20px 35px;
+	background: #fff;
+	border-radius: 4px;
+	border: 5px solid rgba(0,0,0,0.39);
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	-webkit-background-clip: padding;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	position: relative;
+	bottom: 0px;
+	left: 50%;
+	margin-left: -305px;
+}
 
 .hidden{ display:none !important; }
 .only-slightly-hidden{ display:none; }
