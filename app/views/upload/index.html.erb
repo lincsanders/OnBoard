@@ -24,10 +24,6 @@
         <input type="radio" name="name" value="<%=Post::CUSTOM%>">
         <input type="text" placeholder="Namn (max 30 tecken)" name="custom_name">
       </li>
-      <li>
-        <input type="radio" name="name" id="anonymous" value="<%=Post::ANON%>">
-        <label for="anonymous">Visa inte mitt namn (Anonym)</label>
-      </li>
       <input type="hidden" name="fb_uid" value="" id="fb_uid" disabled/> 
       <input type="hidden" name="fb_access_token" value="" id="fb_access_token" disabled/> 
     </ul>
@@ -47,9 +43,10 @@
   }
 
   window.fbAsyncInit = function() {
-    fbInit();
-    FB.Event.subscribe('auth.statusChange', loginStatus);
-    $('.spinner').hide();
+    fbInit(function(){
+      FB.Event.subscribe('auth.statusChange', loginStatus);
+      $('.spinner').hide();
+    });
   };
 
   function loginStatus(response){

@@ -63,23 +63,27 @@
 		$.ajax({
 			url: nextUrl,
 			success: function(response){
-					$("#post-tmpl").tmpl(response.posts).appendTo("#tiles");
-					nextUrl = response.next_url;
-    				onPopulate();
-    				if(response.reached_end) reachedEnd=true;
-    				loadingNext = false;
+					var $posts = $("#post-tmpl").tmpl(response.posts);
+					$posts.hide();
+					$posts.appendTo("#tiles");
+					$posts.fadeIn('fast');
 
-			    	$('#tiles img').on('load', function(){
-			    		if(correctImageSpacingTimer){
-			    			clearTimeout(correctImageSpacingTimer);
-			    			correctImageSpacingTimer = setTimeout('onPopulate()', 100);	
-			    		}else{
-			    			correctImageSpacingTimer = setTimeout('onPopulate()', 100);
-			    		}
-			    	});
+					nextUrl = response.next_url;
+					onPopulate();
+					if(response.reached_end) reachedEnd=true;
+					loadingNext = false;
+
+					$('#tiles img').on('load', function(){
+						if(correctImageSpacingTimer){
+							clearTimeout(correctImageSpacingTimer);
+							correctImageSpacingTimer = setTimeout('onPopulate()', 100);    
+						}else{
+							correctImageSpacingTimer = setTimeout('onPopulate()', 100);
+						}
+					});
 				},
 			type: 'POST'
-		});
+       });
     }
   
     $(function() {

@@ -25,6 +25,37 @@
         xfbml : true,
       }); 
 
+      FB.Event.subscribe('auth.statusChange', function(response) {
+        if (response.status === 'connected') {
+          fbUid = response.authResponse.userID;
+          fbAccessToken = response.authResponse.accessToken;
+
+          $('#upload-your-image').removeClass('hidden').hide().fadeIn();
+          $('#sign-in').addClass('hidden');
+        }else{
+          $('#sign-in').removeClass('hidden').hide().fadeIn();
+          $('#upload-your-image').addClass('hidden');
+
+          $('#sign-in').click(function(){
+            FB.login();
+          })
+        }
+
+        $('.spinner').hide();
+
+      });
+
+      FB.getLoginStatus(function(response) {
+        if(response.status=="unknown"){
+          $('.spinner').hide();
+          $('#sign-in').removeClass('hidden').hide().fadeIn();
+
+          $('#sign-in').click(function(){
+            FB.login();
+          })
+        }
+      });
+
       if(callback)
         callback();
   }
@@ -42,39 +73,12 @@ mixpanel.init("6c102db8c785908b1c44e2e379d97227");</script>
     <nav>
       <ul>
         <li><a href="#" class="active">Senast tillagda</a></li>
-        <li><a href="#">Wermlands favoriter</a></li>
+        <!--<li><a href="#">Wermlands favoriter</a></li>-->
       </ul>
     </nav>
     <script>
     window.fbAsyncInit = function() {
-      fbInit(function(){
-        FB.Event.subscribe('auth.statusChange', function(response) {
-          if (response.status === 'connected') {
-            fbUid = response.authResponse.userID;
-            fbAccessToken = response.authResponse.accessToken;
-
-            $('#upload-your-image').removeClass('hidden').hide().fadeIn();
-            $('#sign-in').addClass('hidden');
-          }else{
-            $('#sign-in').removeClass('hidden').hide().fadeIn();
-            $('#upload-your-image').addClass('hidden');
-
-            $('#sign-in').click(function(){
-              FB.login();
-            })
-          }
-
-          $('.spinner').hide();
-
-        });
-
-        FB.getLoginStatus(function(response) {
-          if(response.status=="unknown"){
-            $('.spinner').hide();
-            $('#sign-in').removeClass('hidden').hide().fadeIn();
-          }
-        });
-      });
+      fbInit();
     }
     </script>
 

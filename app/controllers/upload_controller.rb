@@ -21,7 +21,7 @@ class UploadController < ApplicationController
         uploaded_by: params[:fb_uid], 
         uploaded_by_name: (params[:name] == Post::CUSTOM ? params[:custom_name] : (params[:name] == Post::NAME ? facebook_user['name'] : 'Anonymous')),
         image_title: params[:image_title],
-        file_name: Post.random_filename(File.extname(file.original_filename)), 
+        file_name: Post.random_filename(File.extname(file.original_filename)),
       })
 
       post.save_images file
