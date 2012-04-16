@@ -6,8 +6,14 @@
 <% @header_tags << '<meta property="og:description" content="'+@post.image_title.to_s+'" />' %>
 <% @header_tags << '<meta property="og:image" content="'+@post.medium_url+'" />' %>
 
+<script>
+	window.location = '/'
+</script>
+<!--
 <%= image_tag @post.large_url %>
 
 <div><fb:like send="true" width="450" show_faces="true" /></div>
 
 <div class="fb-comments" data-href="<%="#{fullsize_url :unique_id => @post.unique_id}"%>" data-num-posts="5" data-width="470"></div>
+
+-->
