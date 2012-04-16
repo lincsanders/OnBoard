@@ -217,6 +217,12 @@ nav a:hover, nav a.active{
 	font-weight: bold;
 }
 
+.spinner{
+	float: right;
+	position: relative;
+	top: 15px;
+}
+
 /* Upload image */
 
 #upload-image{
