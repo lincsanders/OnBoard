@@ -31,6 +31,7 @@ class Post < ActiveRecord::Base
       unique_id: unique_id,
       image_title: image_title,
       uploaded_by_name: uploaded_by_name,
+      url_encoded_large_url: u(large_url),
       fullsize_url: fullsize_url({:unique_id => unique_id, :host => Rails.configuration.host}),
     }
   end
