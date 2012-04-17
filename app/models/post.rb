@@ -9,11 +9,7 @@ class Post < ActiveRecord::Base
   MEDIUM = 198
   SMALL = 75
 
-  NAME='name'
-  ANON='anon'
-  CUSTOM='custom'
-
-  def s3_base; "http://#{Rails.configuration.aws_bucket}.s3.amazonaws.com/"; end
+  def s3_base; Rails.configuration.s3_base; end
   def facebook_user_image; "http://graph.facebook.com/#{uploaded_by}/picture"; end
 
   def original_filename; "#{unique_id}/original_#{file_name}"; end
