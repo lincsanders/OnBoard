@@ -234,7 +234,7 @@ nav a:hover, nav a.active{
 
 #about-us{
 	width: 530px;
-	height: 690px;
+	margin: 100px auto 80px;
 	padding: 20px 35px;
 	background: #fff;
 	border-radius: 4px;
@@ -245,11 +245,6 @@ nav a:hover, nav a.active{
 	-webkit-background-clip: padding;
 	-moz-background-clip: padding;
 	background-clip: padding-box;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-top: -260px;
-	margin-left: -305px;
 }
 
 
@@ -361,24 +356,9 @@ nav a:hover, nav a.active{
 	}
 }
 
-@media only screen and (max-width: 520px) {
-	header{ padding: 0 3px; }
-	.logo{ margin-right: 5px; }
-	nav a{
-		padding: 0 3px;
-	}
-
-	nav { height: 22px; }
-	nav li{ float: none; }
-	nav a{
-		height: 20px;
-		line-height: 20px;
-		font-size: 15px;
-	}
-}
-
-@media only screen and (max-width: 395px) {
-	nav a{
-		font-size: 14px;
+@media only screen and (max-width: 700px) {
+	#about-us{
+		width: 100%;
+		box-sizing: border-box;
 	}
 }
