@@ -62,10 +62,10 @@ class Post < ActiveRecord::Base
     img.resize "#{LARGE.to_s}" if img['width'] > LARGE
     s3file = RightAws::S3::Key.create(bucket, large_filename).put(img.to_blob, 'public-read')
 
-    img.resize "#{MEDIUM.to_s}X#{MEDIUM.to_s}" if img['width'] > MEDIUM
+    img.resize "#{MEDIUM.to_s}X" if img['width'] > MEDIUM
     s3file = RightAws::S3::Key.create(bucket, medium_filename).put(img.to_blob, 'public-read')
 
-    img.resize "#{SMALL.to_s}X#{SMALL.to_s}" if img['width'] > SMALL
+    img.resize "#{SMALL.to_s}X" if img['width'] > SMALL
     s3file = RightAws::S3::Key.create(bucket, small_filename).put(img.to_blob, 'public-read')
 
     true
