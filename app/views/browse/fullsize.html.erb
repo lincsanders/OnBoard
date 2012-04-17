@@ -2,9 +2,8 @@
 <% @header_tags << '<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# wermlandforever: http://ogp.me/ns/fb/wermlandforever#">' %>
 <% @header_tags << '<meta property="og:type" content="wermlandforever:photo" />' %>
 <% @header_tags << '<meta property="og:url" content="http://'+Rails.configuration.host+request.fullpath+'" />' %>
-<% @header_tags << '<meta property="og:title" content="'+@post.image_title.to_s+'" />' %>
-<% @header_tags << '<meta property="og:description" content="'+@post.image_title.to_s+'" />' %>
-<% @header_tags << '<meta property="og:image" content="'+@post.medium_url+'" />' %>
+<% @og_title = @post.image_title.to_s%>
+<% @og_image = @post.medium_url %>
 
 <div id="fullsize-image">
 	<%= image_tag @post.large_url %>
