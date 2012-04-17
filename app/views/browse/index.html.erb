@@ -36,6 +36,8 @@
     function scrollFunctions(){
       	var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 300);
 
+      	console.log(closeToBottom);
+
 		if(closeToBottom) {
 			if(!loadingNext && !reachedEnd) loadNext();
 
@@ -48,7 +50,7 @@
     }
     
     function onScroll(event) {
-    	if(!scrollTimer) scrollTimer=setTimeout('scrollFunctions()', 300);
+    	scrollFunctions();
     };
 
     function loadNext(){
