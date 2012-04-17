@@ -1,0 +1,18 @@
+<div id="login-form">
+  
+  <h1>Login</h1>
+  
+  <div id="form-wrapper"> 
+    <%= form_tag({:action => :login}) do %>
+      <p><%= label_tag 'Username: ' %> <%= text_field 'user', 'username' %></p>
+      <p><%= label_tag 'Password: ' %> <%= password_field 'user', 'password' %></p>
+      <p class="login"><%= submit_tag "Login" %></p>
+    <% end %>
+  </div>
+  
+</div>
+<script>
+  $(function(){
+    $('input').uniform();
+  });
+</script>

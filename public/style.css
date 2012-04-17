@@ -191,7 +191,7 @@ nav a:hover, nav a.active{
 
 .sharing .inner{
 	display: inline-block;
-	line-height: 38px;
+	line-height: 35px;
 }
 
 .sharing .pin-it-button,
@@ -337,8 +337,56 @@ nav a:hover, nav a.active{
 	margin-left: -305px;
 }
 
+/* Admin */
+
+#admin{
+	width: 680px;
+	padding: 20px 35px;
+	background: #fff;
+	border-radius: 4px;
+	border: 5px solid rgba(0,0,0,0.39);
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	-webkit-background-clip: padding;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	position: relative;
+	bottom: 0px;
+	left: 50%;
+	margin-left: -390px;
+}
+
+#uploads-list{
+}
+
+#admin-logout{
+	float:right;
+}
+
+#admin-nav{
+	float:left;
+}
+
+.uploads-post{
+	display:block;
+	padding: 13px;
+	float: left;
+}
+
+#admin-notice{
+	font: 'Open Sans Condensed', sans-serif;
+	border-color: silver;
+	border-style: dotted;
+	border-width: 2px ;
+	padding: 5px;
+}
+
+/* Generic Things */
+
 .hidden{ display:none !important; }
 .only-slightly-hidden{ display:none; }
+.clear { clear: both; }
 
 @media only screen and (max-width: 800px) {
 	nav a{ font-size: 18px; }

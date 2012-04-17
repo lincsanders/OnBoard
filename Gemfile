@@ -20,6 +20,7 @@ end
 gem 'jquery-rails'
 gem 'right_aws'
 gem 'tupalo-mini_magick'
+gem "will_paginate"
 
 group :production do
   gem 'pg'

@@ -4,7 +4,15 @@ require 'mini_magick'
 
 class Post < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+  
   before_save :set_identifiers
+  cattr_reader :per_page
+  
+  scope :confirmed, :conditions => {:approved => true}
+  scope :unconfirmed, :conditions => {:approved => false}
+  scope :latest, :order => "created_at DESC"
+
+  @@per_page = 15
 
   LARGE = 1368
   MEDIUM = 198

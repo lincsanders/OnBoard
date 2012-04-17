@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120416193717) do
+ActiveRecord::Schema.define(:version => 20120417183434) do
+
+  create_table "_posts_old_20120415", :force => true do |t|
+    t.string   "file_name"
+    t.string   "unique_id"
+    t.string   "mime_type"
+    t.integer  "rating"
+    t.integer  "size"
+    t.integer  "uploaded_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "moderators", :force => true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.datetime "login_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", :force => true do |t|
     t.string   "file_name"
@@ -20,11 +39,12 @@ ActiveRecord::Schema.define(:version => 20120416193717) do
     t.integer  "rating"
     t.string   "size"
     t.string   "uploaded_by"
-    t.string   "uploaded_by_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uploaded_by_name"
     t.string   "image_title"
     t.string   "submission_type"
+    t.boolean  "approved",         :default => true
   end
 
 end

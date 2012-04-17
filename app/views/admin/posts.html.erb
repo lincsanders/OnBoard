@@ -1,0 +1,37 @@
+<script src="/js/jquery.pretty.photo.js"></script>
+
+<div id="uploads-list">
+
+  <h3 id="admin-nav">
+    <a href="<%=confirmed_posts_url%>"><%=@action=='confirmed' ? '<u>Confirmed</u>'.html_safe : 'Confirmed'%></a> | 
+    <a href="<%=unconfirmed_posts_url%>"><%=@action=='unconfirmed' ? '<u>Unconfirmed</u>'.html_safe : 'Unconfirmed'%></a>
+  </h3>
+  <h3 id="admin-logout">
+    <a href="<%=admin_logout_url%>">Logout</a>
+  </h3>
+  <div class="clear"></div>
+
+  <% if @posts.length > 0 %>
+    <%= will_paginate @posts %>
+    <% @posts.each do |post| %>
+      <div class="uploads-post">
+        <%= link_to image_tag(post.medium_url), post.large_url, :rel => "prettyPhoto", :title => post.image_title ? post.image_title : post.id.to_s %>
+        <p>
+          <%= link_to 'Confirm', confirm_post_url(:id => post.id, :return_url => request.fullpath) %><br />
+          <%= link_to 'Unconfirm', unconfirm_post_url(:id => post.id, :return_url => request.fullpath) %><br />
+          <%= link_to 'Delete', delete_post_url(:id => post.id, :return_url => request.fullpath) %>
+        </p>
+      </div>
+    <% end %>
+    <div class="clear"></div>
+  <% else %>
+    <p><strong>No posts here!</strong></p>
+  <% end %>
+</div>
+
+<script>
+  $("a[rel^='prettyPhoto']").prettyPhoto({
+    social_tools: '',
+    deeplinking: false,
+  });
+</script>

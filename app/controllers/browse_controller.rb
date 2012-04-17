@@ -8,14 +8,17 @@ class BrowseController < ApplicationController
   end
 
   def fullsize
-    @post = Post.find_by_unique_id(params[:unique_id])
+    @post = Post.confirmed.find_by_unique_id(params[:unique_id])
+    
+    redirect_to '/' if !@post
+
     @post.rating = (@post.rating.to_i + 1).to_i
     @post.save
   end
 
   def latest
     posts=[]
-    Post.find(:all, :order => "created_at DESC", :limit => STEP).each do |p|
+    Post.confirmed.latest.find(:all, :limit => STEP).each do |p|
       posts << p.json_object
     end
 
@@ -27,7 +30,7 @@ class BrowseController < ApplicationController
 
   def next
     posts=[]
-    Post.find(:all, :order => "created_at DESC", :offset => params[:offset], :limit => STEP).each do |p|
+    Post.confirmed.latest.find(:all, :offset => params[:offset], :limit => STEP).each do |p|
       posts << p.json_object
     end
 

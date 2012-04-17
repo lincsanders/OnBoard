@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Wermland Forever Moderation</title>
+  
+  <%= stylesheet_link_tag "application" %>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/prettyPhoto.css">
+
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  
+  <div id="admin">
+	
+  	<% if flash[:warning] or flash[:notice] or flash[:message]%>
+  	  <div id="admin-notice" <% if flash[:warning] %>class="warning"<% end %>>
+  	    <%= flash[:warning] || flash[:notice] || flash[:message]%>
+  	  </div>
+  	  <script type="text/javascript">
+  	    setTimeout("new Effect.Fade('notice');", 15000)
+  	  </script>
+  	<% end %>
+
+  	<%= yield %>
+  	
+	</div>
+</body>
+</html>

@@ -59,7 +59,9 @@
 			success: function(response){
 					var $posts = $("#post-tmpl").tmpl(response.posts);
 					$.each($posts, function(k,post){
-						if(FB) FB.XFBML.parse(post);
+						if(FB != null){
+							FB.XFBML.parse(post);	
+						} 
 					});
 					$posts.appendTo("#tiles");
 

@@ -11,6 +11,19 @@ OnBoard::Application.routes.draw do
   
   match 'why' => 'browse#why', :as => :why
 
+  match 'admin' => 'admin#index'
+
+  match 'admin/login' => 'admin#login', :as => :admin_login
+  match 'admin/logout' => 'admin#logout', :as => :admin_logout
+
+  match 'admin/unconfirmed_posts' => 'admin#unconfirmed_posts', :as => :unconfirmed_posts
+  match 'admin/confirmed_posts' => 'admin#confirmed_posts', :as => :confirmed_posts
+
+  match 'admin/confirm_all' => 'admin#confirm_all_posts', :as => :confirm_all_posts
+  match 'admin/confirm_post/:id' => 'admin#confirm_post', :as => :confirm_post
+  match 'admin/unconfirm_post/:id' => 'admin#unconfirm_post', :as => :unconfirm_post
+  match 'admin/delete_post/:id' => 'admin#delete_post', :as => :delete_post
+
   match ':unique_id' => 'browse#fullsize', :as => :fullsize
 
 

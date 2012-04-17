@@ -1,0 +1,30 @@
+<%= render :partial => 'menu', :locals => {:currently_active => 'uncategorised'} %>
+
+<div id="admin-inner-wrapper">
+  
+<% if @images.count > 0 %>
+  
+  <ul id="uploads-list" class="uncategorized">  
+    <%= will_paginate @images %>
+  	<% @images.each do |image| %>
+  	  <li>
+  			<%= link_to image_tag(url_for(:controller => 'admin', :action => 'preview_thumb', :image_name => image.image_name, :extension => image.extension)), url_for(:controller => 'admin', :action => 'preview_image', :image_name => image.image_name, :extension => image.extension), :class => 'lightbox' %>
+  			  <ul class="categories">
+  					<% @categories.each do |c| %>
+  					  <li>
+  						  <%= link_to c.name, put_image_in_category_url(:image_name => image.image_name, :category_name => c.seo_name) %>
+  						</li>
+  					<% end %>
+  				</ul>
+  		</li>
+  	<% end %>
+	</ul>
+<% else %>
+	<p><strong>No uncategorised images here! GOOD WORK ALSO, BRO.</strong></p>
+<% end %>
+</div>
+<script>
+  $(function(){
+    $('.lightbox').fancybox();
+  });
+</script>
