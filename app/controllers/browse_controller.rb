@@ -9,7 +9,7 @@ class BrowseController < ApplicationController
 
   def fullsize
     @post = Post.find_by_unique_id(params[:unique_id])
-    @post.rating = @post.rating.to_i + 1
+    @post.rating = (@post.rating.to_i + 1).to_i
     @post.save
   end
 

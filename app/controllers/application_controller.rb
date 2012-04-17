@@ -17,6 +17,5 @@ class ApplicationController < ActionController::Base
     return @facebook_user if !@facebook_user['id'].nil?
 
     return nil
-
   end
 end
