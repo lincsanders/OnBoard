@@ -1,11 +1,11 @@
 html {
-	background: url(img/bg.jpg) no-repeat center center fixed;
+	background: url(http://assets.wermlandforever.se/bg.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/bg.jpg', sizingMethod='scale');
-	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/bg.jpg', sizingMethod='scale')";
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://assets.wermlandforever.se/bg.jpg', sizingMethod='scale');
+	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://assets.wermlandforever.se/bg.jpg', sizingMethod='scale')";
 }
 
 body{
