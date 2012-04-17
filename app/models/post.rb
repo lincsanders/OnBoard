@@ -27,7 +27,7 @@ class Post < ActiveRecord::Base
       large_url: large_url,
       medium_url: medium_url,
       small_url: small_url,
-      facebook_user_image: submission_type != ANON ? facebook_user_image : '',
+      facebook_user_image: facebook_user_image,
       unique_id: unique_id,
       image_title: image_title,
       uploaded_by_name: uploaded_by_name,
