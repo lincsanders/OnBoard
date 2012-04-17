@@ -26,6 +26,8 @@ class UploadController < ApplicationController
 
       post.save_images file
 
+      flash[:facebook_actions] = "FB.api('/me/wermlandforever:upload', 'post', { photo : '#{fullsize_url :unique_id => post.unique_id}' });"
+
       x = open("https://graph.facebook.com/#{params[:fb_uid]}/wermlandforever:upload?photo=#{fullsize_url({:unique_id => post.unique_id})}&access_token=#{params[:fb_access_token]}")
     end
 

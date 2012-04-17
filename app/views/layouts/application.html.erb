@@ -35,6 +35,7 @@
 
           $('#upload-your-image').removeClass('hidden').hide().fadeIn();
           $('#sign-in').addClass('hidden');
+          <%= flash[:facebook_actions] ? flash[:facebook_actions].html_safe : ''%>
         }else{
           $('#sign-in').removeClass('hidden').hide().fadeIn();
           $('#upload-your-image').addClass('hidden');
