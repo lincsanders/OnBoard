@@ -29,6 +29,6 @@ class Moderator < ActiveRecord::Base
   end
 
   def encrypt_password
-    self.password = self.encrypted_password(self.password_entry)
+    self.password = Moderator.encrypted_password(self.password_entry)
   end
 end
