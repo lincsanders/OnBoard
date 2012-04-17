@@ -1,17 +1,18 @@
 <div id="upload-image">
-  <h2>Ladda upp en bild</h2>
+  <h2>Ladda upp din bild</h2>
   <p class="intro">
-    Dela med dig av ditt Wermland med andra människor!<br>
-    Tänk på att inte ladda upp bilder som kan vara stötande.
+    Dela med dig av ditt Wermland!<br>
+    <br>
+    Ladda inte upp bilder som kan vara stötande eller missvisande.
   </p>
 
   <form action="<%=submit_url%>" method="POST" enctype="multipart/form-data">
-    <p class="upload">
-      <input type="file" name="image_upload">
-    </p>
-
     <p>
       <input type="text" placeholder="Beskrivning (max 30 tecken)" name="image_title" maxlength="30">
+    </p>
+
+    <p class="upload">
+      <input type="file" name="image_upload">
     </p>
 
     <input type="hidden" name="fb_uid" value="" id="fb_uid" disabled/> 
