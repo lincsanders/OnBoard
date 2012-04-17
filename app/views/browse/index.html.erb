@@ -25,7 +25,8 @@
 		handler.wookmark(options);
 
 		$("a[rel^='prettyPhoto']").prettyPhoto({
-			social_tools: ''
+			social_tools: '',
+			deeplinking: false,
 		});
 
     	$('.fb-init').click(function(e){
@@ -35,8 +36,6 @@
 
     function scrollFunctions(){
       	var closeToBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 300);
-
-      	console.log(closeToBottom);
 
 		if(closeToBottom) {
 			if(!loadingNext && !reachedEnd) loadNext();
@@ -59,13 +58,15 @@
 			url: nextUrl,
 			success: function(response){
 					var $posts = $("#post-tmpl").tmpl(response.posts);
-					$posts.hide();
+					$.each($posts, function(k,post){
+						if(FB) FB.XFBML.parse(post);
+					});
 					$posts.appendTo("#tiles");
-					$posts.fadeIn('fast');
 
 					nextUrl = response.next_url;
 					onPopulate();
 					if(response.reached_end) reachedEnd=true;
+					
 					loadingNext = false;
 
 					$('#tiles img').on('load', function(){
