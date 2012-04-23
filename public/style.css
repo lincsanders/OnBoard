@@ -14,7 +14,7 @@ body{
 }
 
 a{
-	color: #183f15;
+	color: #92313E;
 	-webkit-transition: color 0.4s;
 	-moz-transition: color 0.4s;
 	-o-transition: color 0.4s;
@@ -22,10 +22,26 @@ a{
 	text-decoration: none;
 }
 
+a:hover{
+	color: #701E29;
+}
+
 h2{
 	margin: 0;
 	font: 42px/42px 'Open Sans Condensed', sans-serif;
 	color: #92313e;
+}
+
+h3{
+	margin: 20px 0 0;
+	font: 34px/42px 'Open Sans Condensed', sans-serif;
+	color: #333;
+}
+
+.about-text{
+	margin: 0 0 10px;
+	font: 19px/22px 'Open Sans Condensed', sans-serif;
+	color: #666;
 }
 
 p.intro{
@@ -36,10 +52,6 @@ p.intro{
 
 p.upload{
 	margin-top: 35px;
-}
-
-a:hover{
-	color: #266221;
 }
 
 header{
